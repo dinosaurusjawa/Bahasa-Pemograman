@@ -1,0 +1,27 @@
+@startuml source.cpp
+
+title "Alur Program"
+start
+
+(*) -->"Eksekusi Program"
+--> "Menampilkan Menu"
+--> "Memilih Menu"
+if " Menu Pilihan 1" then
+    --> "Input nama"
+    -->[true] " Masukan first name"
+    -->[true] " Masukan Middle name"
+    -->[true] " Masukan Last name"
+    --> "Tampilkan Full Name"
+    if "Ulangi" then
+    -->[yes] "Input nama"
+    else 
+    -->[no] "EXIT"
+    endif
+
+else
+    -->"Menu pilihan 2"
+    -->"Exit"
+endif
+-->"selesai"
+-->(*)
+@enduml

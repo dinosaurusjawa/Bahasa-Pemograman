@@ -1,0 +1,25 @@
+@startuml source1
+
+title "Alur program"
+start
+:Display MENU;
+repeat
+    :input pilihan;
+    if (pilihan == 1) then (true)
+        :Masukan Nama Awal;
+        :Masukan Nama Tengah;
+        :Masukan Nama Akhir;
+    :Tampilkan Full Name;
+    else (false)
+        if (pilihan == 2) then (true)
+        :Exit;
+    else (false)
+        :Pilihan Salah;
+        endif
+    endif
+    repeat while (pilihan != 2)
+:Exit;
+stop
+
+@enduml
+
