@@ -15,15 +15,15 @@ if  (menu minuman)" then (case1)
 elseif (menu minuman)" then (case2)
 
     :Menu pilihan 1.Kopi;
-    :MENU TEH;
+    :MENU Kopi;
     :Harga (5000);
     :input (QTY);
-    :Anda telah memesan Kopi (QTY;
+    :Anda telah memesan Kopi (QTY);
     :Tampilkan harga total;
 
 endif
    :Total semua;
-   :terima kasih telah berbelanja;
+   :terima kasih telah berbelanja ;
 
 stop
 :selesai;
