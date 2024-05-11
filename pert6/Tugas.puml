@@ -1,0 +1,31 @@
+@startuml Tugas.cpp
+
+start
+:Display (Tampilkan Menu);
+
+if  (menu minuman)" then (case1)
+
+    :Menu pilihan 1.Teh;
+    :MENU TEH;
+    :Harga (3000);
+    :input (QTY);
+    :Anda telah memesan teh (QTY);
+    :Tampilkan harga total;
+
+elseif (menu minuman)" then (case2)
+
+    :Menu pilihan 1.Kopi;
+    :MENU TEH;
+    :Harga (5000);
+    :input (QTY);
+    :Anda telah memesan Kopi (QTY;
+    :Tampilkan harga total;
+
+endif
+   :Total semua;
+   :terima kasih telah berbelanja;
+
+stop
+:selesai;
+
+@enduml
