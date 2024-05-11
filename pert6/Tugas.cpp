@@ -1,10 +1,9 @@
 #include <iostream>
 #include <string>
-#include <iomanip> // Untuk setprecision dalam menampilkan harga
+#include <iomanip>
 
 using namespace std;
 
-// Class Beverage untuk merepresentasikan produk (teh atau kopi)
 class Beverage {
 private:
     string name;
@@ -22,7 +21,6 @@ public:
     }
 };
 
-// Class SalesSystem untuk mengelola proses penjualan
 class SalesSystem {
 private:
     Beverage tea;
