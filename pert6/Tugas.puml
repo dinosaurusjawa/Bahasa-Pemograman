@@ -3,7 +3,7 @@
 start
 :Display (Tampilkan Menu);
 
-if  (menu minuman)" then (case1)
+if  (menu minuman) then (case1)
 
     :Menu pilihan 1.Teh;
     :MENU TEH;
@@ -12,7 +12,7 @@ if  (menu minuman)" then (case1)
     :Anda telah memesan teh (QTY);
     :Tampilkan harga total;
 
-elseif (menu minuman)" then (case2)
+elseif (menu minuman) then (case2)
 
     :Menu pilihan 1.Kopi;
     :MENU Kopi;
