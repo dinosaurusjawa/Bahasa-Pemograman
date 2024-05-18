@@ -4,7 +4,7 @@ title Diagram untuk Source Code Pertemuan 4
 start
 :Initialize Variables;
 while (pilih != '5.keluar') is (control statement)
-    :Display menu;
+    :Kalkulator sederhana;
     :Get user input (pilih);
 if  (1.tambah) then (case1)
     :Masukan 2 angka untuk di tambah: (a, b);
@@ -22,7 +22,7 @@ else
     :Display "Pilihan Salah!";
     endif
 endwhile (controll statement)
-:Display "EXIT";
+:Display "Keluar dari program.";
 stop
 @enduml
 
