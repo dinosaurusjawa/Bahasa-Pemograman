@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-// Deklarasi fungsi
 void tambah();
 void kurang();
 void bagi();
@@ -43,7 +42,6 @@ int main() {
     return 0;
 }
 
-// Definisi fungsi tambah
 void tambah() {
     int a, b;
     printf("Masukkan dua angka untuk ditambah: ");
@@ -51,7 +49,6 @@ void tambah() {
     printf("Hasil: %d\n", a + b);
 }
 
-// Definisi fungsi kurang
 void kurang() {
     int a, b;
     printf("Masukkan dua angka untuk dikurang: ");
@@ -59,7 +56,6 @@ void kurang() {
     printf("Hasil: %d\n", a - b);
 }
 
-// Definisi fungsi bagi
 void bagi() {
     float a, b;
     printf("Masukkan dua angka untuk dibagi: ");
@@ -71,7 +67,6 @@ void bagi() {
     }
 }
 
-// Definisi fungsi kali
 void kali() {
     int a, b;
     printf("Masukkan dua angka untuk dikali: ");
