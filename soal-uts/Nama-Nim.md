@@ -15,14 +15,15 @@ jelaskan type data yang anda ketahui dan berikan penjelasan terkait type data te
 
 # SOAL 4
 Lengkapi codingan berikut:
-	```int main(){
+```
+int main(){
 	tambah();
 	kurang();
 	bagi();
 	kali();
 	return 0;
 }
-	```	
+```	
 
 # JAWABAN
 ## JAWABAN ANDA (Nama file cpp)
