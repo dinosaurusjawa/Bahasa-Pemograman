@@ -1,0 +1,30 @@
+@startuml @Source.cpp
+
+start
+
+:Menu;
+:1. Input;
+:2. Exit;
+:Pilihan;
+:(pilih);
+if (Menu Pilihan 1) then 
+    --> "Masukan Nama"
+    :Masukan Nama Depan;
+    :(namaPertama);
+    :Masukan Nama Tengah;
+    :(namaTengah);
+    :Masukan Nama akhir;
+    :(namaTerakir);
+    :Nama Lengkap (namaPertama, namaTengah, namaTerakir);
+        if (Menu Pilihan 2) then
+        --> "ulangi"
+        else
+        :exit;
+
+else  (Menu Pilihan 2) then
+
+:exit;
+endif
+:selesai;
+
+@enduml
