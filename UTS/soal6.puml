@@ -4,7 +4,12 @@ title Diagram alur/flow soal nomor 6
 start
 :Initialize Variables;
 while (pilih != '5.keluar') is (control statement)
-    :Kalkulator sederhana;
+:Menu
+1. tambah
+2. kurang
+3. kali
+4. bagi
+5. keluar;
     :Pilih operasi (1-5) : (pilih);
 if  (1.tambah) then (case1)
     :Masukan 2 angka untuk di tambah: (a, b);
