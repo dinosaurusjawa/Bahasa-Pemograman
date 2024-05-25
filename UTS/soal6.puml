@@ -1,0 +1,28 @@
+@startuml soal6.cpp
+
+title Diagram alur/flow soal nomor 6
+start
+:Initialize Variables;
+while (pilih != '5.keluar') is (control statement)
+    :Kalkulator sederhana;
+    :Pilih operasi (1-5) : (pilih);
+if  (1.tambah) then (case1)
+    :Masukan 2 angka untuk di tambah: (a, b);
+    :Hasil (a+b);
+else if (2.kurang) then (case3)
+    :Masukkan dua angka untuk dikurang:(a, b);
+    :Hasil (a-b);
+else if (3.kali) then (case3)
+    :Masukan dua angka untuk di bagi(a, b);
+    :Hasil (a/b);
+else if (4.bagi) then (case4)
+    :Masukkan dua angka untuk di kali:(a, b);
+    :hasil (a*b);
+else
+    :Display "Pilihan Salah!";
+    endif
+endwhile (controll statement)
+:Display "Keluar dari program.";
+stop
+@enduml
+
