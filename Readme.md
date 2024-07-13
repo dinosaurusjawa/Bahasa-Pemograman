@@ -1,12 +1,12 @@
 (hai)
----------------------------------------------------------------------------------------------------------
-how to fix large file if u push to GitHub limit
 
+---------------------------------------------------------------------------------------------------------
+(FIX Large on Laravel (Mysql,Postgress,MariaDB,Api,Dll)
+how to fix large file if u push to GitHub limit
 cek file 
 git add .
 git commit 
 git push
-
 jika eror cek bagian mana yang large file limit
 lakukan git ignore (nano .gitignore)
 (git log --online) untuk cek aktivitas commit
@@ -18,7 +18,6 @@ selesai.
 jika belum berhasil saat mengikuti Langkah di atas
 hapus data yang membuat large file rm -rf (nama file/folder)
 git add . (dll_)
-
 cek nano .git
 cek nano .git/config 
 (bila perlu reset keduanya)
@@ -32,15 +31,12 @@ masuk ke delam folder yang awal yang sebelumnya folder baru
 git add .
 git commit -m "(Nama)
 git push
-
-
 jika sudah (hapus folder" yang tidak penting di awal terminal rm -rf)
 tambahan untuk (api bash)
 masuk ke folder api docker exec -it api bash
 -lakukan reset docker (docker compose down / docker comopose up -d --build)
 -setelah itu php artisan migrate
 -setelah itu php artisan migrate:fresh --seed
-
 git add .
 git commit 
 git push 
