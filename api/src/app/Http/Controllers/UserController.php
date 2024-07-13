@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $data = DB::connection('mysql')->table('users')->get();
         return response()->json($data, 200);
-    }
+    } 
 
     
     public function get_user(Request $request, $id) {

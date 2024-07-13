@@ -4,8 +4,7 @@ di tempat kalian menyimpan data perkuliahan
 - jangan lupa tambahkan .gitignore agar DB tidak masuk ke dalam GIT
 
 - setelah itu buatlah folder dengan nama api
-```
-https://github.com/djambred/pemrograman_web/tree/main/api
+``https://github.com/djambred/pemrograman_web/tree/main/api
 ```
 
 - yang mana struktur foldernya terdiri dari

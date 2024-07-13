@@ -21,8 +21,7 @@ $router->group(['prefix' => 'api/connect'], function() use ($router){
     $router->get('/{id}', ['uses' => 'UserController@get_user']);
 });
 
-$router->group(['prefix' => 'api/product', 'middleware' => 'auth' ], function() use ($router){
+$router->group(['prefix' => 'api/product', 'middleware'=>'auth' ], function() use ($router){
     $router->get('/', ['uses' => 'ProductController@index']);
     $router->post('/', ['uses' => 'ProductController@store']);
-
 });

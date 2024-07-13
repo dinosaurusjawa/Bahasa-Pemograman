@@ -48,7 +48,7 @@ class Authenticate
 
                     if ($check_token === null) {
                         $res['success'] = false;
-                        $res['message'] = 'Permission Not Allowed';
+                        $res['message'] = 'Permission Not A llowed';
                         return response()->json($res, 403);
                     }
                 } else {
