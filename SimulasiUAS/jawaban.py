@@ -2,12 +2,13 @@ import json
 import os
 
 class BahanBaku:
-    def __init__(self, jenis, pemasok, waktu, lokasi, stok):
+    def __init__(self, jenis, pemasok, waktu, lokasi, stok, tim_produksi):
         self.jenis = jenis
         self.pemasok = pemasok
         self.waktu = waktu
         self.lokasi = lokasi
         self.stok = stok
+        self.tim_produksi = tim_produksi
 
     def to_dict(self):
         return {
@@ -15,12 +16,20 @@ class BahanBaku:
             "pemasok": self.pemasok,
             "waktu": self.waktu,
             "lokasi": self.lokasi,
-            "stok": self.stok
+            "stok": self.stok,
+            "tim_produksi": self.tim_produksi
         }
 
     @staticmethod
     def from_dict(data):
-        return BahanBaku(data['jenis'], data['pemasok'], data['waktu'], data['lokasi'], data['stok'])
+        return BahanBaku(
+            data['jenis'],
+            data['pemasok'],
+            data['waktu'],
+            data['lokasi'],
+            data['stok'],
+            data['tim_produksi']
+        )
 
 
 class ManajemenBahanBaku:
@@ -52,7 +61,7 @@ class ManajemenBahanBaku:
     def tampilkan_data(self):
         print("=== Daftar Bahan Baku ===")
         for i, bahan in enumerate(self.data):
-            print(f"[{i}] {bahan['jenis']} | Pemasok: {bahan['pemasok']} | Stok: {bahan['stok']}")
+            print(f"[{i}] {bahan['jenis']} | Pemasok: {bahan['pemasok']} | Stok: {bahan['stok']} | Tim Produksi: {bahan['tim_produksi']}")
         print("==========================\n")
 
 
@@ -72,8 +81,9 @@ def main():
             waktu = input("Waktu yang Diperlukan (hari): ")
             lokasi = input("Lokasi Pemberian Barang: ")
             stok = input("Stok Ketersediaan Setelah Dikirim (unit): ")
+            tim_produksi = input("Tim Produksi: ")
 
-            bahan_baku = BahanBaku(jenis, pemasok, waktu, lokasi, stok)
+            bahan_baku = BahanBaku(jenis, pemasok, waktu, lokasi, stok, tim_produksi)
             manajemen.add_bahan_baku(bahan_baku)
 
         elif pilihan == '2':
@@ -84,8 +94,9 @@ def main():
             waktu = input("Waktu yang Diperlukan (hari): ")
             lokasi = input("Lokasi Pemberian Barang: ")
             stok = input("Stok Ketersediaan Setelah Dikirim (unit): ")
+            tim_produksi = input("Tim Produksi: ")
 
-            bahan_baku = BahanBaku(jenis, pemasok, waktu, lokasi, stok)
+            bahan_baku = BahanBaku(jenis, pemasok, waktu, lokasi, stok, tim_produksi)
             manajemen.update_bahan_baku(index, bahan_baku)
 
         elif pilihan == '3':

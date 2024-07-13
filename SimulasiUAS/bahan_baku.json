@@ -1,9 +1,10 @@
 [
     {
-        "jenis": "jahe",
-        "pemasok": "jawa",
-        "waktu": "10",
-        "lokasi": "gudang jakarta",
-        "stok": "200kg"
+        "jenis": "Jahe",
+        "pemasok": "Jawa",
+        "waktu": "10hari",
+        "lokasi": "Gudang jakarta",
+        "stok": "150kg",
+        "tim_produksi": "PT.Cahaya Jahe"
     }
 ]

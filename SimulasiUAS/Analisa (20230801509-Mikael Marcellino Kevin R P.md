@@ -36,3 +36,4 @@ Sistem informasi manajemen produksi.
 Analisis Data:
 Menggunakan software analitik untuk memantau dan menganalisis penggunaan bahan baku.
 Evaluasi kinerja pemasok dan kualitas bahan baku.
+
