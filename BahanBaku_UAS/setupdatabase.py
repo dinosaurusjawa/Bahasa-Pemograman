@@ -32,6 +32,20 @@ def setup_database():
     )
     ''')
 
+    # Create Warehouses table
+    cursor.execute('''
+    DROP TABLE IF EXISTS Warehouses
+    ''')
+    cursor.execute('''
+    CREATE TABLE Warehouses (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        location TEXT NOT NULL,
+        capacity INTEGER NOT NULL,
+        current_stock INTEGER NOT NULL DEFAULT 0
+    )
+    ''')
+
     conn.commit()
     conn.close()
     print("Database setup complete.")

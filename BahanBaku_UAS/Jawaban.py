@@ -16,6 +16,11 @@ def add_data(table, data):
             INSERT INTO Users (username, password, role)
             VALUES (?, ?, ?)
             '''
+        elif table == 'Warehouses':
+            query = '''
+            INSERT INTO Warehouses (name, location, capacity, current_stock)
+            VALUES (?, ?, ?, ?)
+            '''
         else:
             raise ValueError(f"Unsupported table: {table}")
 
@@ -30,7 +35,7 @@ def add_data(table, data):
         conn.close()
 
 def handle_add():
-    table = simpledialog.askstring("Input", "Enter table name (Products or Users):")
+    table = simpledialog.askstring("Input", "Enter table name (Products, Users, or Warehouses):")
     if table == 'Products':
         name = simpledialog.askstring("Input", "Enter product name:")
         description = simpledialog.askstring("Input", "Enter product description:")
@@ -44,6 +49,13 @@ def handle_add():
         password = simpledialog.askstring("Input", "Enter password:")
         role = simpledialog.askstring("Input", "Enter role (admin or user):")
         data = (username, password, role)
+        add_data(table, data)
+    elif table == 'Warehouses':
+        name = simpledialog.askstring("Input", "Enter warehouse name:")
+        location = simpledialog.askstring("Input", "Enter warehouse location:")
+        capacity = simpledialog.askinteger("Input", "Enter warehouse capacity:")
+        current_stock = simpledialog.askinteger("Input", "Enter current stock:")
+        data = (name, location, capacity, current_stock)
         add_data(table, data)
     else:
         messagebox.showwarning("Warning", "Unsupported table name.")
@@ -66,6 +78,14 @@ def update_data(table, column, value, condition_column, condition_value):
     finally:
         conn.close()
 
+def handle_update():
+    table = simpledialog.askstring("Input", "Enter table name (Products, Users, or Warehouses):")
+    column = simpledialog.askstring("Input", "Enter column name to update:")
+    value = simpledialog.askstring("Input", "Enter new value:")
+    condition_column = simpledialog.askstring("Input", "Enter column name for condition:")
+    condition_value = simpledialog.askstring("Input", "Enter condition value:")
+    update_data(table, column, value, condition_column, condition_value)
+
 def delete_data(table, condition_column, condition_value):
     conn = sqlite3.connect('inventory_management.db')
     cursor = conn.cursor()
@@ -84,16 +104,8 @@ def delete_data(table, condition_column, condition_value):
     finally:
         conn.close()
 
-def handle_update():
-    table = simpledialog.askstring("Input", "Enter table name (Products or Users):")
-    column = simpledialog.askstring("Input", "Enter column name to update:")
-    value = simpledialog.askstring("Input", "Enter new value:")
-    condition_column = simpledialog.askstring("Input", "Enter column name for condition:")
-    condition_value = simpledialog.askstring("Input", "Enter condition value:")
-    update_data(table, column, value, condition_column, condition_value)
-
 def handle_delete():
-    table = simpledialog.askstring("Input", "Enter table name (Products or Users):")
+    table = simpledialog.askstring("Input", "Enter table name (Products, Users, or Warehouses):")
     condition_column = simpledialog.askstring("Input", "Enter column name for condition:")
     condition_value = simpledialog.askstring("Input", "Enter condition value:")
     delete_data(table, condition_column, condition_value)
