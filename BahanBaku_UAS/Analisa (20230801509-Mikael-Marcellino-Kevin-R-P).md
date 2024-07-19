@@ -2,13 +2,13 @@
 ### Nama : MIkael Marcellino Kevin R P
 ### NIM  : 20230801509
 
-```
+
 Perusahaan ini menyediakan layanan penyimpanan dan distribusi bahan baku, bertindak sebagai pihak kedua antara pabrik yang memproduksi bahan baku dan pelanggan yang membutuhkannya, baik dalam negeri maupun luar negeri. Layanan ini dibutuhkan untuk meningkatkan efisiensi operasional dengan membantu pabrik dan pelanggan fokus pada inti bisnis mereka, memastikan ketersediaan bahan baku yang stabil dan tepat waktu, serta menyediakan solusi skalabel sesuai pertumbuhan bisnis pelanggan. Target pasar perusahaan meliputi pabrik yang memproduksi bahan baku, perusahaan manufaktur yang membutuhkan bahan baku untuk produksi, dan eksportir serta importir yang terlibat dalam perdagangan internasional bahan baku.
 
 Perusahaan ini akan menempatkan gudangnya di lokasi strategis yang dekat dengan jalur transportasi utama, seperti pelabuhan, bandara, dan jalan tol, beroperasi di pasar domestik dan internasional untuk melayani pelanggan di berbagai wilayah. Tahap persiapan termasuk penyusunan rencana bisnis dan perizinan akan dimulai dalam beberapa bulan ke depan, dengan peluncuran operasional gudang dan layanan distribusi diharapkan dalam waktu 6-12 bulan setelah persiapan.
 
 Perusahaan ini akan beroperasi dengan menggunakan fasilitas gudang yang dilengkapi dengan teknologi manajemen inventaris untuk memastikan penyimpanan bahan baku yang efisien dan aman. Sistem pengiriman yang terintegrasi akan mengatur jadwal dan rute pengiriman yang optimal, dengan teknologi ERP dan pelacakan real-time untuk manajemen stok dan pengiriman. Selain itu, perusahaan akan membangun kemitraan dengan penyedia logistik, pabrik, dan perusahaan manufaktur untuk memperluas jaringan layanan.
-```
+
 ##  1. Introduction
 ### 1.1 Purpose
 Dokumen ini bertujuan untuk menjelaskan kebutuhan bisnis perusahaan yang akan bergerak di bidang penyimpanan dan distribusi bahan baku, berfungsi sebagai pihak kedua antara pabrik dan pelanggan, baik dalam negeri maupun luar negeri.
