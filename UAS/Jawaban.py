@@ -1,12 +1,14 @@
 import mysql.connector
+import inquirer
 from mysql.connector import Error
 
-# Konfigurasi koneksi ke database
+# Konfigurasi koneksi
 config = {
-    'user': 'root',  # Ganti dengan nama pengguna Anda
+    'user': 'root',
     'password': 'password',  # Ganti dengan kata sandi Anda
     'host': 'localhost',
     'port': 3306,
+    'host': 'localhost',
     'database': 'PT_BahanBakuku',
 }
 
@@ -21,154 +23,133 @@ def create_connection():
         print(f"Error: {e}")
     return connection
 
-def create_tables(connection):
-    """Membuat tabel-tabel di database."""
-    cursor = connection.cursor()
-    tables = [
-        """
-        CREATE TABLE IF NOT EXISTS Pemasok (
-            PemasokID INT PRIMARY KEY AUTO_INCREMENT,
-            Nama VARCHAR(100) NOT NULL,
-            Alamat VARCHAR(255),
-            Telepon VARCHAR(20),
-            Email VARCHAR(100),
-            KontakPerson VARCHAR(100)
-        );
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS BahanBaku (
-            BahanBakuID INT PRIMARY KEY AUTO_INCREMENT,
-            Nama VARCHAR(100) NOT NULL,
-            Kategori VARCHAR(100),
-            Deskripsi TEXT,
-            Unit VARCHAR(50)
-        );
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS PesananPembelian (
-            PesananID INT PRIMARY KEY AUTO_INCREMENT,
-            PemasokID INT,
-            TanggalPesanan DATE,
-            TanggalPengiriman DATE,
-            Status VARCHAR(50),
-            TotalHarga DECIMAL(15, 2),
-            FOREIGN KEY (PemasokID) REFERENCES Pemasok(PemasokID)
-        );
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS DetailPesananPembelian (
-            DetailID INT PRIMARY KEY AUTO_INCREMENT,
-            PesananID INT,
-            BahanBakuID INT,
-            Jumlah INT,
-            HargaSatuan DECIMAL(15, 2),
-            TotalHarga DECIMAL(15, 2),
-            FOREIGN KEY (PesananID) REFERENCES PesananPembelian(PesananID),
-            FOREIGN KEY (BahanBakuID) REFERENCES BahanBaku(BahanBakuID)
-        );
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS Inventaris (
-            InventarisID INT PRIMARY KEY AUTO_INCREMENT,
-            BahanBakuID INT,
-            Lokasi VARCHAR(100),
-            Jumlah INT,
-            TanggalUpdate DATE,
-            FOREIGN KEY (BahanBakuID) REFERENCES BahanBaku(BahanBakuID)
-        );
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS ProsesPengolahan (
-            ProsesID INT PRIMARY KEY AUTO_INCREMENT,
-            BahanBakuID INT,
-            TanggalProses DATE,
-            Jumlah INT,
-            Status VARCHAR(50),
-            Kualitas VARCHAR(50),
-            FOREIGN KEY (BahanBakuID) REFERENCES BahanBaku(BahanBakuID)
-        );
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS Distribusi (
-            DistribusiID INT PRIMARY KEY AUTO_INCREMENT,
-            BahanBakuID INT,
-            Tujuan VARCHAR(255),
-            TanggalPengiriman DATE,
-            Jumlah INT,
-            Status VARCHAR(50),
-            FOREIGN KEY (BahanBakuID) REFERENCES BahanBaku(BahanBakuID)
-        );
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS Pengguna (
-            PenggunaID INT PRIMARY KEY AUTO_INCREMENT,
-            Nama VARCHAR(100) NOT NULL,
-            Posisi VARCHAR(100),
-            Username VARCHAR(50) UNIQUE,
-            Password VARCHAR(255),
-            Email VARCHAR(100),
-            NoTelepon VARCHAR(20)
-        );
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS TransaksiPembayaran (
-            PembayaranID INT PRIMARY KEY AUTO_INCREMENT,
-            PesananID INT,
-            TanggalPembayaran DATE,
-            JumlahPembayaran DECIMAL(15, 2),
-            MetodePembayaran VARCHAR(50),
-            Status VARCHAR(50),
-            FOREIGN KEY (PesananID) REFERENCES PesananPembelian(PesananID)
-        );
-        """
-    ]
-    
-    for table in tables:
-        try:
-            cursor.execute(table)
-            print("Tabel berhasil dibuat atau sudah ada")
-        except Error as e:
-            print(f"Error: {e}")
-    
-    cursor.close()
-
-def insert_pemasok(connection, nama, alamat, telepon, email, kontak_person):
-    """Menambahkan data ke tabel Pemasok."""
-    query = """
-    INSERT INTO Pemasok (Nama, Alamat, Telepon, Email, KontakPerson)
-    VALUES (%s, %s, %s, %s, %s);
-    """
-    values = (nama, alamat, telepon, email, kontak_person)
-    cursor = connection.cursor()
+def fetch_tables(connection):
+    """Mengambil daftar tabel dari database."""
+    tables = []
     try:
-        cursor.execute(query, values)
-        connection.commit()
-        print("Data berhasil ditambahkan ke tabel Pemasok")
+        cursor = connection.cursor()
+        cursor.execute("SHOW TABLES;")
+        tables = [table[0] for table in cursor.fetchall()]
     except Error as e:
         print(f"Error: {e}")
-    cursor.close()
+    return tables
 
-def fetch_pemasok(connection):
-    """Mengambil data dari tabel Pemasok."""
-    query = "SELECT * FROM Pemasok;"
-    cursor = connection.cursor()
+def fetch_columns(connection, table_name):
+    """Mengambil daftar kolom dari tabel tertentu."""
+    columns = []
     try:
-        cursor.execute(query)
-        results = cursor.fetchall()
-        for row in results:
+        cursor = connection.cursor()
+        cursor.execute(f"DESCRIBE {table_name};")
+        columns = [column[0] for column in cursor.fetchall()]
+    except Error as e:
+        print(f"Error: {e}")
+    return columns
+
+def fetch_data_from_table(connection, table_name):
+    """Mengambil dan menampilkan data dari tabel tertentu."""
+    try:
+        cursor = connection.cursor()
+        cursor.execute(f"SELECT * FROM {table_name};")
+        rows = cursor.fetchall()
+        columns = fetch_columns(connection, table_name)
+        print(f"Data dari tabel {table_name}:")
+        print(columns)
+        for row in rows:
             print(row)
     except Error as e:
         print(f"Error: {e}")
-    cursor.close()
+
+def insert_data_into_table(connection, table_name):
+    """Menambahkan data ke tabel tertentu."""
+    columns = fetch_columns(connection, table_name)
+    values = []
+    for column in columns:
+        value = input(f"Masukkan nilai untuk {column}: ")
+        values.append(value)
+    try:
+        cursor = connection.cursor()
+        placeholders = ', '.join(['%s'] * len(columns))
+        cursor.execute(f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({placeholders});", values)
+        connection.commit()
+        print("Data berhasil ditambahkan.")
+    except Error as e:
+        print(f"Error: {e}")
+
+def update_data_in_table(connection, table_name):
+    """Mengubah data dalam tabel tertentu."""
+    columns = fetch_columns(connection, table_name)
+    id_column = columns[0]  # Asumsikan kolom pertama adalah ID atau primary key
+    id_value = input(f"Masukkan {id_column} dari baris yang ingin diubah: ")
+    updates = {}
+    for column in columns[1:]:  # Tidak termasuk ID
+        value = input(f"Masukkan nilai baru untuk {column} (biarkan kosong untuk tidak mengubah): ")
+        if value:
+            updates[column] = value
+    if updates:
+        set_clause = ', '.join([f"{col} = %s" for col in updates.keys()])
+        values = list(updates.values())
+        values.append(id_value)
+        try:
+            cursor = connection.cursor()
+            cursor.execute(f"UPDATE {table_name} SET {set_clause} WHERE {id_column} = %s;", values)
+            connection.commit()
+            print("Data berhasil diubah.")
+        except Error as e:
+            print(f"Error: {e}")
+
+def delete_data_from_table(connection, table_name):
+    """Menghapus data dari tabel tertentu."""
+    columns = fetch_columns(connection, table_name)
+    id_column = columns[0]  # Asumsikan kolom pertama adalah ID atau primary key
+    id_value = input(f"Masukkan {id_column} dari baris yang ingin dihapus: ")
+    try:
+        cursor = connection.cursor()
+        cursor.execute(f"DELETE FROM {table_name} WHERE {id_column} = %s;", (id_value,))
+        connection.commit()
+        print("Data berhasil dihapus.")
+    except Error as e:
+        print(f"Error: {e}")
 
 def main():
-    """Fungsi utama untuk menjalankan script."""
     connection = create_connection()
     if connection:
-        create_tables(connection)
-        insert_pemasok(connection, 'PT Contoh Pemasok', 'Jl. Contoh No.1', '1234567890', 'contoh@pemasok.com', 'John Doe')
-        fetch_pemasok(connection)
-        connection.close()
+        while True:
+            action_question = [
+                inquirer.List('action',
+                              message="Pilih aksi yang ingin dilakukan",
+                              choices=['Lihat Data', 'Tambah Data', 'Ubah Data', 'Hapus Data', 'Keluar'],
+                              ),
+            ]
+            action_answer = inquirer.prompt(action_question)
+            action = action_answer['action']
+            if action == 'Keluar':
+                break
+
+            tables = fetch_tables(connection)
+            if not tables:
+                print("Tidak ada tabel yang ditemukan dalam database.")
+                continue
+
+            table_question = [
+                inquirer.List('table',
+                              message="Pilih tabel yang ingin dikelola",
+                              choices=tables,
+                              ),
+            ]
+            table_answer = inquirer.prompt(table_question)
+            selected_table = table_answer['table']
+            
+            if action == 'Lihat Data':
+                fetch_data_from_table(connection, selected_table)
+            elif action == 'Tambah Data':
+                insert_data_into_table(connection, selected_table)
+            elif action == 'Ubah Data':
+                update_data_in_table(connection, selected_table)
+            elif action == 'Hapus Data':
+                delete_data_from_table(connection, selected_table)
+
+        if connection.is_connected():
+            connection.close()
 
 if __name__ == "__main__":
     main()

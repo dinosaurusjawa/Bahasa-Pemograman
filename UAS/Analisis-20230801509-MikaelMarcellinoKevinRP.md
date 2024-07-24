@@ -40,3 +40,81 @@ Pertumbuhan Pendapatan: Meningkatkan pendapatan melalui ekspansi pasar dan penin
 Efisiensi Operasional: Mengoptimalkan proses bisnis untuk mengurangi biaya dan meningkatkan efisiensi.
 Kepuasan Pelanggan: Meningkatkan kepuasan pelanggan melalui produk berkualitas dan layanan yang andal.
 Dengan pemahaman bisnis yang jelas, PT Bahan Bakuku dapat mengarahkan strateginya untuk mencapai tujuan perusahaan, mengatasi tantangan yang ada, dan memanfaatkan peluang yang tersedia untuk pertumbuhan dan keberhasilan jangka panjang.
+
+
+## 1. Pendahuluan
+#### 1.1. Tujuan Dokumen
+Dokumen ini bertujuan untuk mendokumentasikan kebutuhan fungsional untuk pengembangan sistem pengelolaan dan distribusi bahan baku PT Bahan Bakuku.
+
+#### 1.2. Ruang Lingkup Proyek
+Proyek ini mencakup pengembangan sistem terintegrasi yang mencakup pengadaan, pengolahan, penyimpanan, distribusi, dan manajemen inventaris bahan baku.
+
+## 2. Kebutuhan Fungsional
+- 2.1. Modul Pengadaan
+
+Deskripsi: Modul ini akan mengelola seluruh proses pengadaan bahan baku dari pemasok.
+Fitur Utama:
+Pendaftaran dan manajemen data pemasok.
+Pembuatan dan pelacakan pesanan pembelian.
+Pengelolaan kontrak dan negosiasi dengan pemasok.
+Integrasi dengan sistem pembayaran untuk memfasilitasi transaksi keuangan.
+
+- 2.2. Manajemen Inventaris
+
+Deskripsi: Sistem untuk memantau dan mengelola persediaan bahan baku secara real-time.
+Fitur Utama:
+Pelacakan jumlah stok bahan baku di berbagai lokasi penyimpanan.
+Pemberitahuan otomatis untuk stok minimum dan reorder point.
+Pengelolaan batch dan lot untuk kontrol kualitas.
+Laporan inventaris berkala dan analisis persediaan.
+
+- 2.3. Pengolahan Bahan Baku
+
+Deskripsi: Alat untuk mengelola proses pengolahan bahan baku dan memastikan kualitas.
+Fitur Utama:
+Pengelolaan resep dan formula pengolahan.
+Penjadwalan dan pelacakan proses produksi.
+Kontrol kualitas bahan baku sebelum dan setelah pengolahan.
+Dokumentasi dan pelaporan hasil pengolahan.
+- 2.4. Distribusi dan Logistik
+
+Deskripsi: Modul untuk merencanakan dan mengelola distribusi bahan baku.
+Fitur Utama:
+Pengelolaan rute pengiriman dan armada kendaraan.
+Pelacakan pengiriman secara real-time.
+Integrasi dengan layanan logistik pihak ketiga.
+Pengelolaan dokumen pengiriman dan bukti serah terima.
+
+## 3. Kebutuhan Non-Fungsional
+- 3.1. Skalabilitas
+
+Sistem harus mampu menangani peningkatan volume data dan jumlah pengguna tanpa penurunan kinerja.
+
+- 3.2. Kinerja
+
+Sistem harus responsif dan mampu memproses transaksi dalam waktu yang wajar untuk memastikan efisiensi operasional.
+
+- 3.3. Keamanan
+
+Sistem harus memastikan keamanan data dengan enkripsi, kontrol akses, dan audit log untuk melindungi informasi sensitif.
+- 3.4. Kemudahan Penggunaan
+
+Antarmuka pengguna harus intuitif dan mudah digunakan oleh semua pemangku kepentingan untuk meminimalkan kurva pembelajaran.
+## 4. Diagram Proses
+- 4.1. Diagram Alir Pengadaan
+```
+Pemasok -> Pengajuan Pesanan -> Verifikasi Pesanan -> Pembayaran -> Pengiriman -> Penerimaan Barang
+```
+- 4.2. Diagram Alir Manajemen Inventaris
+```
+Penerimaan Barang -> Penyimpanan -> Pemantauan Stok -> Reorder Point -> Pemesanan Ulang
+``` 
+- 4.3. Diagram Alir Pengolahan Bahan Baku
+```
+Pengambilan Bahan Baku -> Proses Pengolahan -> Kontrol Kualitas -> Penyimpanan Hasil -> Distribusi
+```
+- 4.4. Diagram Alir Distribusi dan Logistik
+``` 
+Penerimaan Pesanan -> Penjadwalan Pengiriman -> Pengemasan -> Pengiriman -> Konfirmasi Penerimaan
+
+```
