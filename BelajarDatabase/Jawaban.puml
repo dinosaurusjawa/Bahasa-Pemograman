@@ -1,0 +1,54 @@
+@startuml
+
+!define RECTANGLE class
+skinparam shadowing false
+skinparam class {
+    BackgroundColor<<User>> #FFDDDD
+    BackgroundColor<<CRUD>> #DDFFDD
+    BackgroundColor<<Database>> #DDDDFF
+    ArrowColor #000000
+    BorderColor #000000
+}
+
+package "Database CRUD Operations" {
+    
+    RECTANGLE User <<User>> {
+        +input()
+        +select_action()
+    }
+
+    RECTANGLE CRUDOperations <<CRUD>> {
+        +create_connection()
+        +fetch_tables()
+        +fetch_columns()
+        +fetch_data_from_table()
+        +insert_data_into_table()
+        +update_data_in_table()
+        +delete_data_from_table()
+    }
+    
+    RECTANGLE MySQLConnector <<Database>> {
+        +connect()
+        +execute_query()
+        +commit()
+    }
+    
+    User --> CRUDOperations : interacts
+    CRUDOperations --> MySQLConnector : uses
+    CRUDOperations -> "SHOW TABLES" : fetch_tables()
+    CRUDOperations -> "DESCRIBE table_name" : fetch_columns()
+    CRUDOperations -> "SELECT * FROM table_name" : fetch_data_from_table()
+    CRUDOperations -> "INSERT INTO table_name" : insert_data_into_table()
+    CRUDOperations -> "UPDATE table_name" : update_data_in_table()
+    CRUDOperations -> "DELETE FROM table_name" : delete_data_from_table()
+    
+    MySQLConnector -[hidden]> MySQLDatabase : connects to
+    
+    RECTANGLE MySQLDatabase <<Database>> {
+        +tables
+        +columns
+        +data
+    }
+}
+
+@enduml
